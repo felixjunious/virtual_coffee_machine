@@ -1,8 +1,8 @@
 class MoneyMachine:
     # Coin values in EUR
     COINS = {
-        "2E": 2.00,
-        "1E": 1.00,
+        "2€": 2.00,
+        "1€": 1.00,
         "50c": 0.50,
         "20c": 0.20,
         "10c": 0.10,
@@ -20,21 +20,33 @@ class MoneyMachine:
         print(f"Revenue collected: €{self.revenue:.2f}")
 
     def _collect_coins(self):
-        """Ask the user for coin counts and return the total inserted amount."""
-        print("Insert coins (Euro):")
+        """
+        Ask the user how many coins they want to insert of each type.
+        Returns the total amount inserted in euros.
+        """
+        print("\n--- Coin Insertion ---")
+        print("Enter how many coins you are inserting for each type.")
+        print("If none, type 0.\n")
+
         inserted_total = 0.0
 
         for coin_type, coin_value in self.COINS.items():
-            try:
-                amount = int(input(f"{coin_type}: "))
-            except ValueError:
-                print("Invalid number. Using 0.")
-                amount = 0
-            inserted_total += amount * coin_value
+            while True:
+                try:
+                    count = int(input(f"How many '{coin_type}' coins? "))
+                    if count < 0:
+                        print("Please enter a non-negative number.")
+                        continue
+                    break
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
 
+            inserted_total += count * coin_value
+
+        print(f"\nTotal inserted: €{inserted_total:.2f}\n")
         return round(inserted_total, 2)
 
-    def process_payment(self, cost):
+    def handle_payment(self, cost):
         """
         Handle payment for a drink.
         Returns True if payment is accepted, False otherwise.

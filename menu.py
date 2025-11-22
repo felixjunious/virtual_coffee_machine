@@ -69,7 +69,7 @@ class Menu:
         return None
 
     @classmethod
-    def show_items(cls, with_ingredients=True):
+    def show_items(cls, with_ingredients=False):
         """
         Display the menu items.
 
