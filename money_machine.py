@@ -11,13 +11,21 @@ class MoneyMachine:
         "1c": 0.01,
     }
 
+    INGREDIENT_COSTS = {
+        "water": 0.002, # € per ML
+        "milk" : 0.002, # € per ML
+        "coffee": 0.05, # € per g
+    }
+
     def __init__(self):
         # Tracks total revenue collected
         self.revenue = 0.0
+        self.profit = 0.0
 
     def report(self):
         """Display how much money the machine has collected."""
         print(f"Revenue collected: €{self.revenue:.2f}")
+        print(f"Profit: €{self.profit:.2f}")
 
     def _collect_coins(self):
         """
@@ -46,20 +54,29 @@ class MoneyMachine:
         print(f"\nTotal inserted: €{inserted_total:.2f}\n")
         return round(inserted_total, 2)
 
-    def handle_payment(self, cost):
+    def handle_payment(self, drink):
         """
-        Handle payment for a drink.
+        Process payment for a drink.
+        drink: MenuItem
         Returns True if payment is accepted, False otherwise.
         """
         paid_amount = self._collect_coins()
 
-        if paid_amount < cost:
+        if paid_amount < drink.cost:
             print("Not enough money. Refunding...")
             return False
 
-        if paid_amount > cost:
-            change = round(paid_amount - cost, 2)
+        if paid_amount > drink.cost:
+            change = round(paid_amount - drink.cost, 2)
             print(f"Change returned: €{change:.2f}")
 
-        self.revenue += cost
+        # Update revenue
+        self.revenue += drink.cost
+
+        # Calculate cost of ingredients
+        ingredient_cost = sum(
+            self.INGREDIENT_COSTS.get(k, 0) * v for k, v in drink.ingredients.items()
+        )
+        self.profit += (drink.cost - ingredient_cost)
+
         return True
