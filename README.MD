@@ -1,11 +1,10 @@
-
-```markdown
+````markdown
 # ☕ Virtual Coffee Machine
 
-iA fully functonal **virtual coffee machine simulator** written in Python.  
+A fully functional **virtual coffee machine simulator** written in Python.  
 It simulates how a real coffee machine works — tracking ingredients, processing payments, managing inventory, and providing an admin mode for maintenance tasks.
 
-This project was built for self learning purposes and demonstrates:
+This project was built for self-learning purposes and demonstrates:
 - Object-oriented programming  
 - Modular Python design  
 - Dataclasses  
@@ -20,7 +19,7 @@ This project was built for self learning purposes and demonstrates:
 - Order drinks by name  
 - Insert coins in EUR (1c → 2€)  
 - Automatic change calculation  
-- Checks ingredient availability  
+- Ingredient availability checks  
 - Coffee is “brewed” if resources and payment are sufficient  
 - Machine reports for:
   - Water
@@ -42,8 +41,7 @@ Accessible only through a password prompt.
 
 ## 🧩 Project Structure
 
-```
-
+```text
 virtual_coffee_machine/
 │
 ├── main.py
@@ -53,47 +51,55 @@ virtual_coffee_machine/
 ├── admin.py
 ├── README.md
 └── LICENSE
-
 ````
 
 ### **`coffee_machine.py`**
+
 Handles:
-- Resource tracking  
-- Resource validation  
-- Brewing coffee  
-- Reporting  
-- Refilling ingredients  
+
+* Resource tracking
+* Resource validation
+* Brewing coffee
+* Reporting
+* Refilling ingredients
 
 ### **`money_machine.py`**
+
 Handles:
-- EUR coin system  
-- Coin input  
-- Payment processing  
-- Revenue tracking  
+
+* EUR coin system
+* Coin input
+* Payment processing
+* Revenue tracking
 
 ### **`menu.py`**
+
 Handles:
-- Menu items using `@dataclass`
-- Adding/removing drinks
-- Finding drinks
-- Displaying menu
+
+* Menu items using `@dataclass`
+* Adding/removing drinks
+* Finding drinks
+* Displaying menu
 
 ### **`admin.py`**
+
 Handles:
-- Password authentication  
-- Admin menu options  
-- Resource modifications  
-- Menu management  
+
+* Password authentication
+* Admin menu options
+* Resource modifications
+* Menu management
 
 ---
 
 ## 🖥️ How to Run
 
 ### **1. Clone the repository**
+
 ```sh
 git clone https://github.com/felixjunious/virtual_coffee_machine
 cd virtual_coffee_machine
-````
+```
 
 ### **2. Run the program**
 
@@ -107,9 +113,9 @@ python main.py
 
 ```
 --- Virtual Coffee Machine ---
-Espresso - €1.50
-Latte     - €2.50
-Cappuccino - €3.00
+Espresso     - €1.50
+Latte        - €2.50
+Cappuccino   - €3.00
 
 What would you like? latte
 
@@ -140,10 +146,12 @@ Access granted.
 
 ## 🔮 Future Improvements
 
-Some possible enhancements:
+Possible enhancements:
 
 * Logging system
 * Saving state to JSON
 * GUI version (Tkinter or PyQt)
+
+---
 
 
