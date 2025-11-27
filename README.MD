@@ -50,7 +50,6 @@ virtual_coffee_machine/
 ├── menu.py
 ├── admin.py
 ├── README.md
-└── LICENSE
 ````
 
 ### **`coffee_machine.py`**
